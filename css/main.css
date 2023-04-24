@@ -1,0 +1,8 @@
+@media screen and (min-width:1280px) {
+}
+
+@keyframes zoom {
+    to {
+      transform: scale(1.2);
+    }
+}
