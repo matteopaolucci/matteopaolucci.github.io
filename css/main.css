@@ -44,7 +44,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     border: 1px white solid;
-    margin: 10vw;
+    margin: 10vw 5vw;
     border-radius: 5px;
 }
 
