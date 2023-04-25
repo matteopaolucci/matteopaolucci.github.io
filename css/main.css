@@ -1,4 +1,103 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover:not(.fa, .fab, .fas) {
+    text-decoration: revert;
+}
+
+body {
+    background-color: #0d1117;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+li#github > section {
+    display: none;
+}
+
+li#github > ul {
+	height: 20px;
+	margin: 16px;
+}
+
+li#github > ul > li:last-child {
+    height: 0px;
+    position: relative;
+    left: 80px;
+    bottom: 20px;
+}
+
+main {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px white solid;
+    margin: 10vw;
+    border-radius: 5px;
+}
+
+main > header > picture {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8%;
+}
+
+main > hr {
+    width: 60%;
+}
+
+main > ul {
+    width: 80%;
+    margin: 3em 0 3em 10%;
+    border: 1px white solid;
+    border-radius: 6px;
+}
+
+main > ul > li {
+    text-align: center;
+}
+
+main > ul > li:not(:first-child) {
+    height: 20px;
+	padding: 16px 0;
+}
+
+main > ul > li:not(:last-child) {
+    border-bottom: 1px white solid;
+}
+
+picture#profile > img {
+    border-radius: 100%;
+    width: 10em;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+@media screen and (min-width:768px) {
+    main {
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+
+@media screen and (min-width:1024px) {
+}
+
 @media screen and (min-width:1280px) {
+    main {
+        width: 30%;
+        margin-left: 35%;
+    }
 }
 
 @keyframes zoom {
