@@ -29,7 +29,7 @@ li#github > ul {
 li#github > ul > li:last-child {
     height: 0px;
     position: relative;
-    left: 80px;
+    left: 43%;
     bottom: 20px;
 }
 
