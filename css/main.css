@@ -7,18 +7,83 @@ a:hover:not(.fa, .fab, .fas) {
     text-decoration: revert;
 }
 
+a.fa:hover, a.fab:hover, a.fas:hover {
+    animation: trasparenza 1.5s linear 0s infinite;
+}
+
 body {
-    background-image: url("../uploads/code.jpg");
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body > div {
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+}
+
+body > div:first-child {
+    background-image: url("../uploads/code.jpg");
+}
+
+body > div#home {
+    background-color: #0d1117;
+}
+
+div#home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.container {
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+}
+
+div.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.text {
+    border-radius: 5px;
+    border: 1px white solid;
+    background-color: #0d1117;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
 }
 
 h1, h2, h3 {
     text-align: center;
 }
 
+h3 {
+    padding: 0 5%;
+}
+
 header {
     margin-bottom: 4%;
+}
+
+iframe {
+    pointer-events: none;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    overflow: hidden;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    opacity: 0.3;
 }
 
 li#github > section {
@@ -89,16 +154,44 @@ ul {
 }
 
 @media screen and (min-width:768px) {
+    body {
+        font-family: monospace, monospace;
+    }
+
     main {
         width: 50%;
         margin-left: 25%;
     }
+    
 }
 
 @media screen and (min-width:1024px) {
 }
 
 @media screen and (min-width:1280px) {
+
+    div.container:hover iframe {
+        opacity: 0.3;
+    }
+      
+    div.container:hover .middle {
+        opacity: 1;
+    }
+    
+    div.middle {
+        transition: .5s ease;
+        opacity: 0;
+        text-align: center;
+    }
+
+    iframe {
+        opacity: 1;
+    }
+
+    iframe:hover {
+        opacity: 0.3;
+    }
+
     main {
         width: 30%;
         margin-left: 35%;
@@ -109,4 +202,11 @@ ul {
     to {
       transform: scale(1.2);
     }
+}
+
+
+@keyframes trasparenza {
+    0% {opacity: 1;}
+    50% {opacity: 0.2;}
+    100% {opacity: 1;}
 }
