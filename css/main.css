@@ -47,6 +47,24 @@ div.middle {
     -ms-transform: translate(-50%, -50%);
 }
 
+div#nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-image: conic-gradient(black, darkblue , #560bad, black);
+    border: 1px white solid;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+}
+
+div#nav i {
+    font-size: 2rem;
+}
+
 .text {
     border-radius: 5px;
     border: 1px white solid;
@@ -66,6 +84,10 @@ h3 {
 
 header {
     margin-bottom: 4%;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 iframe {
@@ -167,8 +189,15 @@ ul {
 }
 
 @media screen and (min-width:768px) {
+
     body {
         font-family: monospace, monospace;
+    }
+
+    div#nav {
+        bottom: 50px;
+        right: 50px;
+        width: 100px;
     }
 
     main > div {

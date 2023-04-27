@@ -19,6 +19,26 @@ $(document).ready(function () {
             $(arrow).fadeIn();
         });
     });
+
+    $("div#nav").click(function() {
+        if($(this).hasClass("clicked")) {
+            $("main > div").get(0).scrollIntoView({behavior: 'smooth', block: 'center'});
+            $(this).removeClass("clicked");
+            $(this).children("i").fadeOut(function() {
+                $(this).removeClass("fa-chevron-up");
+                $(this).addClass("fa-chevron-down");
+                $(this).fadeIn();
+            });
+        } else {
+            $(this).addClass("clicked");
+            $("#home").get(0).scrollIntoView({behavior: 'smooth', block: 'end'});
+            $(this).children("i").fadeOut(function() {
+                $(this).removeClass("fa-chevron-down");
+                $(this).addClass("fa-chevron-up");
+                $(this).fadeIn();
+            });
+        }
+    });
 });
 
 function preventDefaultForScrollKeys(e) {
