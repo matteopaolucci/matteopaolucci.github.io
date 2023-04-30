@@ -2,27 +2,10 @@
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 var keys = { 33: 1, 38: 1, 34: 1, 40: 1 };
 var clicked = false;
+var target = document.querySelector("section#home");
 
 $(document).ready(function () {
-    var target = document.querySelector("section#home");
-    let observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                if(!clicked) 
-                    changeArrow();
-                obs.disconnect();
-                if (entry.target == document.querySelector("main")) {
-                    obs.observe(document.querySelector("section#home"));
-                    target = document.querySelector("section#home");
-                } else {
-                    obs.observe(document.querySelector("main"));
-                    target = document.querySelector("main");
-                }
-            }
-        });
-        if(clicked)
-            setTimeout(() => {clicked = false}, 1000);
-    }, { rootMargin: "0px", threshold: 0.5 });
+    let observer = new IntersectionObserver(intersetctionCallback, { rootMargin: "0px", threshold: 0.6 });
     $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
     $(document).keydown(preventDefaultForScrollKeys);
     $("li#github > ul").click(() => {
@@ -57,6 +40,25 @@ function preventDefaultForScrollKeys(e) {
         }
         return false;
     }
+}
+
+function intersetctionCallback(entries, obs) {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            if(!clicked) 
+                changeArrow();
+            obs.disconnect();
+            if (entry.target == document.querySelector("main")) {
+                obs.observe(document.querySelector("section#home"));
+                target = document.querySelector("section#home");
+            } else {
+                obs.observe(document.querySelector("main"));
+                target = document.querySelector("main");
+            }
+        }
+    });
+    if(clicked)
+        setTimeout(() => {clicked = false}, 1000);
 }
 
 function changeArrow() {
