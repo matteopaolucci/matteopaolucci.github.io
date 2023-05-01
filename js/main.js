@@ -1,37 +1,33 @@
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-var keys = { 33: 1, 38: 1, 34: 1, 40: 1 };
-var clicked = false;
+const KEYS = { 33: 1, 38: 1, 34: 1, 40: 1 };
+const SCROLL_DELAY_MS = 650;
 var target = document.querySelector("section#home");
+var lastChangeArrow = Date.now();
 
 $(document).ready(function () {
-    let observer = new IntersectionObserver(intersetctionCallback, { rootMargin: "0px", threshold: 0.6 });
+    const OBSERVER = new IntersectionObserver(intersetctionCallback, { rootMargin: "0px", threshold: 0.6 });
     $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
     $(document).keydown(preventDefaultForScrollKeys);
     $("li#github > ul").click(() => {
-        let arrow = "li#github > ul > li:last-child > i";
         $("li#github > div").slideToggle();
-        $(arrow).fadeOut(() => {
-            if ($(arrow).hasClass("fa-chevron-down")) {
-                $(arrow).removeClass("fa-chevron-down");
-                $(arrow).addClass("fa-chevron-up");
+        $("li#github > ul > li:last-child > i").fadeOut(function() {
+            if ($(this).hasClass("fa-chevron-down")) {
+                $(this).removeClass("fa-chevron-down");
+                $(this).addClass("fa-chevron-up");
             } else {
-                $(arrow).removeClass("fa-chevron-up");
-                $(arrow).addClass("fa-chevron-down");
+                $(this).removeClass("fa-chevron-up");
+                $(this).addClass("fa-chevron-down");target
             }
-            $(arrow).fadeIn();
+            $(this).fadeIn();
         });
     });
-    observer.observe(target);
-
-    $("div#nav").click(function() {
-        clicked = true;
-        changeArrow();
-    });
+    OBSERVER.observe(target);
+    $("div#nav").click(changeArrow);
 });
 
 function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
+    if (KEYS[e.keyCode]) {
         e.preventDefault();
         if (e.keyCode === 40 || e.keyCode === 34) {
             $("#home").get(0).scrollIntoView({ behavior: 'smooth' });
@@ -45,8 +41,7 @@ function preventDefaultForScrollKeys(e) {
 function intersetctionCallback(entries, obs) {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            if(!clicked) 
-                changeArrow();
+            changeArrow();
             obs.disconnect();
             if (entry.target == document.querySelector("main")) {
                 obs.observe(document.querySelector("section#home"));
@@ -57,27 +52,28 @@ function intersetctionCallback(entries, obs) {
             }
         }
     });
-    if(clicked)
-        setTimeout(() => {clicked = false}, 1000);
 }
 
 function changeArrow() {
-    let selector = "div#nav";
-    if ($(selector).hasClass("clicked")) {
-        $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
-        $(selector).removeClass("clicked");
-        $(selector).children("i").fadeOut(function () {
-            $(this).removeClass("fa-chevron-up");
-            $(this).addClass("fa-chevron-down");
-            $(this).fadeIn();
-        });
-    } else {
-        $(selector).addClass("clicked");
-        $("#home").get(0).scrollIntoView({ behavior: 'smooth', block: 'end' });
-        $(selector).children("i").fadeOut(function () {
-            $(this).removeClass("fa-chevron-down");
-            $(this).addClass("fa-chevron-up");
-            $(this).fadeIn();
-        });
-    }
+    const SELECTOR = "div#nav";
+    if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
+        if ($(SELECTOR).hasClass("clicked")) {
+            $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            $(SELECTOR).removeClass("clicked");
+            $(SELECTOR).children("i").fadeOut(function () {
+                $(this).removeClass("fa-chevron-up");
+                $(this).addClass("fa-chevron-down");
+                $(this).fadeIn();
+            });
+        } else {
+            $(SELECTOR).addClass("clicked");
+            $("#home").get(0).scrollIntoView({ behavior: 'smooth', block: 'end' });
+            $(SELECTOR).children("i").fadeOut(function () {
+                $(this).removeClass("fa-chevron-down");
+                $(this).addClass("fa-chevron-up");
+                $(this).fadeIn();
+            });
+        }
+        lastChangeArrow = Date.now();
+    } 
 }
