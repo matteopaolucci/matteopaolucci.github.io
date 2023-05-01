@@ -17,7 +17,7 @@ $(document).ready(function () {
                 $(this).addClass("fa-chevron-up");
             } else {
                 $(this).removeClass("fa-chevron-up");
-                $(this).addClass("fa-chevron-down");target
+                $(this).addClass("fa-chevron-down");
             }
             $(this).fadeIn();
         });
