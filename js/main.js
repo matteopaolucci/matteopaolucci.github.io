@@ -1,14 +1,14 @@
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 const KEYS = { 33: 1, 38: 1, 34: 1, 40: 1 };
-const SCROLL_DELAY_MS = 650;
+const SCROLL_DELAY_MS = 1000;
 var target = document.querySelector("section#home");
 var lastChangeArrow;
 
 $(document).ready(function () {
     lastChangeArrow = Date.now();
     const OBSERVER = new IntersectionObserver(intersetctionCallback, { rootMargin: "0px", threshold: 0.6 });
-    
+
     $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
     $(document).keydown(preventDefaultForScrollKeys);
     $("li#github > ul").click(() => {
