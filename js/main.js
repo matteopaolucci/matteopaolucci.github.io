@@ -29,7 +29,6 @@ function preventDefaultForScrollKeys(e) {
     // left: 37, up: 38, right: 39, down: 40,
     // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
     const KEYS = { 33: 1, 38: 1, 34: 1, 40: 1 };
-
     if (KEYS[e.keyCode]) {
         e.preventDefault();
         if (e.keyCode === 40 || e.keyCode === 34) {
@@ -60,10 +59,11 @@ function intersetctionCallback(entries, obs) {
 function changeArrow() {
     const SCROLL_DELAY_MS = 1000;
     const SELECTOR = "div#nav";
-
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
-            $('html').animate({scrollTop: $("main").offset().top}, 100);
+            setTimeout(() => {
+                document.querySelector("main > div").scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
             $(SELECTOR).removeClass("clicked");
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-up");
@@ -72,7 +72,9 @@ function changeArrow() {
             });
         } else {
             $(SELECTOR).addClass("clicked");
-            $('html').animate({scrollTop: $("#home").offset().top}, 100);
+            setTimeout(() => {
+                document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 100);
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
