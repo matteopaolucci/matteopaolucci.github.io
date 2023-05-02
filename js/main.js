@@ -21,8 +21,8 @@ $(document).ready(function () {
             $(this).fadeIn();
         });
     });
-    OBSERVER.observe(target);
     $("div#nav").click(changeArrow);
+    OBSERVER.observe(target);
 });
 
 function preventDefaultForScrollKeys(e) {
@@ -57,7 +57,7 @@ function intersetctionCallback(entries, obs) {
 }
 
 function changeArrow() {
-    const SCROLL_DELAY_MS = 500;
+    const SCROLL_DELAY_MS = 700;
     const SELECTOR = "div#nav";
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {

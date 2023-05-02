@@ -26,7 +26,7 @@ body > main, body > section {
 }
 
 body > main {
-    background-image: url("../uploads/code.jpg");
+    background-image: url("../uploads/code_mobile_op.jpg");
 }
 
 body > section#home {
@@ -193,6 +193,10 @@ ul {
 
     body {
         font-family: monospace, monospace;
+    }
+
+    body > main {
+        background-image: url("../uploads/code.jpg");
     }
 
     div#nav {
