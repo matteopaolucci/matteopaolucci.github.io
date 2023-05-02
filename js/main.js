@@ -1,17 +1,14 @@
-// left: 37, up: 38, right: 39, down: 40,
-// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-const KEYS = { 33: 1, 38: 1, 34: 1, 40: 1 };
-const SCROLL_DELAY_MS = 1000;
-var target = document.querySelector("section#home");
+var target;
 var lastChangeArrow;
 
 $(document).ready(function () {
+    target = document.querySelector("section#home");
     lastChangeArrow = Date.now();
     const OBSERVER = new IntersectionObserver(intersetctionCallback, { rootMargin: "0px", threshold: 0.6 });
 
-    $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelector("main > div").scrollIntoView({ behavior: 'smooth', block: 'center' });
     $(document).keydown(preventDefaultForScrollKeys);
-    $("li#github > ul").click(() => {
+    $("li#github > ul").click(function() {
         $("li#github > div").slideToggle();
         $("li#github > ul > li:last-child > i").fadeOut(function() {
             if ($(this).hasClass("fa-chevron-down")) {
@@ -29,6 +26,9 @@ $(document).ready(function () {
 });
 
 function preventDefaultForScrollKeys(e) {
+    // left: 37, up: 38, right: 39, down: 40,
+    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+    const KEYS = { 33: 1, 38: 1, 34: 1, 40: 1 };
     if (KEYS[e.keyCode]) {
         e.preventDefault();
         if (e.keyCode === 40 || e.keyCode === 34) {
@@ -57,10 +57,11 @@ function intersetctionCallback(entries, obs) {
 }
 
 function changeArrow() {
+    const SCROLL_DELAY_MS = 500;
     const SELECTOR = "div#nav";
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
-            $("main > div").get(0).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.querySelector("main > div").scrollIntoView({ behavior: 'smooth', block: 'center' });
             $(SELECTOR).removeClass("clicked");
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-up");
@@ -69,7 +70,7 @@ function changeArrow() {
             });
         } else {
             $(SELECTOR).addClass("clicked");
-            $("#home").get(0).scrollIntoView({ behavior: 'smooth', block: 'end' });
+            document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'end' });
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
