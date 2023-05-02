@@ -91,12 +91,10 @@ html {
     scroll-behavior: smooth;
 }
 
-iframe {
-    pointer-events: none;
+.container img {
     width: 100%;
     aspect-ratio: 1 / 1;
     background-color: white;
-    overflow: hidden;
     display: block;
     transition: .5s ease;
     backface-visibility: hidden;
@@ -218,7 +216,7 @@ ul {
 
 @media screen and (min-width:1280px) {
 
-    div.container:hover iframe {
+    div.container:hover img {
         opacity: 0.3;
     }
       
@@ -232,11 +230,11 @@ ul {
         text-align: center;
     }
 
-    iframe {
+    .container img {
         opacity: 1;
     }
 
-    iframe:hover {
+    .container img:hover {
         opacity: 0.3;
     }
 

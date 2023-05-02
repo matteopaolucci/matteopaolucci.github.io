@@ -63,7 +63,7 @@ function changeArrow() {
         if ($(SELECTOR).hasClass("clicked")) {
             setTimeout(() => {
                 document.querySelector("main > div").scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
+            }, 300);
             $(SELECTOR).removeClass("clicked");
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-up");
@@ -74,7 +74,7 @@ function changeArrow() {
             $(SELECTOR).addClass("clicked");
             setTimeout(() => {
                 document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }, 100);
+            }, 300);
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
