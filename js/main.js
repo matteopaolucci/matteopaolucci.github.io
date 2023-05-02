@@ -58,12 +58,12 @@ function intersetctionCallback(entries, obs) {
 }
 
 function changeArrow() {
-    const SCROLL_DELAY_MS = 800;
+    const SCROLL_DELAY_MS = 1000;
     const SELECTOR = "div#nav";
 
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
-            $('html').animate({scrollTop: $("main").offset().top}, 300);
+            $('html').animate({scrollTop: $("main").offset().top}, 100);
             $(SELECTOR).removeClass("clicked");
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-up");
@@ -72,7 +72,7 @@ function changeArrow() {
             });
         } else {
             $(SELECTOR).addClass("clicked");
-            $('html').animate({scrollTop: $("#home").offset().top}, 300);
+            $('html').animate({scrollTop: $("#home").offset().top}, 100);
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
