@@ -57,7 +57,7 @@ function intersetctionCallback(entries, obs) {
 }
 
 function changeArrow() {
-    const SCROLL_DELAY_MS = 700;
+    const SCROLL_DELAY_MS = 1000;
     const SELECTOR = "div#nav";
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
