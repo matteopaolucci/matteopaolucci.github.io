@@ -57,7 +57,7 @@ function intersetctionCallback(entries, obs) {
 }
 
 function changeArrow() {
-    const SCROLL_DELAY_MS = 1000;
+    const SCROLL_DELAY_MS = 800;
     const SELECTOR = "div#nav";
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
@@ -73,7 +73,7 @@ function changeArrow() {
         } else {
             $(SELECTOR).addClass("clicked");
             setTimeout(() => {
-                document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'end' });
+                document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 300);
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
