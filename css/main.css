@@ -140,6 +140,7 @@ main > div {
     border: 1px white solid;
     margin: 10vw 5vw;
     border-radius: 5px;
+    overflow-y: scroll;
 }
 
 main > div > header > picture {
