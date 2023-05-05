@@ -8,9 +8,9 @@ $(document).ready(function () {
 
     document.querySelector("main > div").scrollIntoView({ behavior: 'smooth', block: 'center' });
     $(document).keydown(preventDefaultForScrollKeys);
-    $("li#github > ul").click(function() {
+    $("li#github > ul").click(function () {
         $("li#github > div").slideToggle();
-        $("li#github > ul > li:last-child > i").fadeOut(function() {
+        $("li#github > ul > li:last-child > i").fadeOut(function () {
             if ($(this).hasClass("fa-chevron-down")) {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
@@ -21,7 +21,7 @@ $(document).ready(function () {
             $(this).fadeIn();
         });
     });
-    $("div#nav").click(() => {changeArrow(true)});
+    $("div#nav").click(() => { changeArrow(true) });
     OBSERVER.observe(target);
 });
 
@@ -59,7 +59,7 @@ function intersetctionCallback(entries, obs) {
 function changeArrow(clicked) {
     const SCROLL_DELAY_MS = 800;
     const SELECTOR = "div#nav";
-    if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
+    if (Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
             if (clicked) {
                 setTimeout(() => {
@@ -73,12 +73,12 @@ function changeArrow(clicked) {
                 $(this).fadeIn();
             });
         } else {
-            $(SELECTOR).addClass("clicked");
             if (clicked) {
                 setTimeout(() => {
                     document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 300);
             }
+            $(SELECTOR).addClass("clicked");
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
@@ -86,5 +86,11 @@ function changeArrow(clicked) {
             });
         }
         lastChangeArrow = Date.now();
-    } 
+    }
+
+    if ($("li#github > ul > li:last-child > i").hasClass("fa-chevron-up")) {
+        $("li#github > div").slideUp();
+        $("li#github > ul > li:last-child > i").removeClass("fa-chevron-up");
+        $("li#github > ul > li:last-child > i").addClass("fa-chevron-down");
+    }
 }
