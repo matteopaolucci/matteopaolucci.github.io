@@ -21,7 +21,7 @@ $(document).ready(function () {
             $(this).fadeIn();
         });
     });
-    $("div#nav").click(changeArrow);
+    $("div#nav").click(() => {changeArrow(true)});
     OBSERVER.observe(target);
 });
 
@@ -43,7 +43,7 @@ function preventDefaultForScrollKeys(e) {
 function intersetctionCallback(entries, obs) {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            changeArrow();
+            changeArrow(false);
             obs.disconnect();
             if (entry.target == document.querySelector("main")) {
                 obs.observe(document.querySelector("section#home"));
@@ -56,14 +56,16 @@ function intersetctionCallback(entries, obs) {
     });
 }
 
-function changeArrow() {
+function changeArrow(clicked) {
     const SCROLL_DELAY_MS = 800;
     const SELECTOR = "div#nav";
     if(Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
-            setTimeout(() => {
-                document.querySelector("main > div").scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
+            if (clicked) {
+                setTimeout(() => {
+                    document.querySelector("main").scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
             $(SELECTOR).removeClass("clicked");
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-up");
@@ -72,9 +74,11 @@ function changeArrow() {
             });
         } else {
             $(SELECTOR).addClass("clicked");
-            setTimeout(() => {
-                document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
+            if (clicked) {
+                setTimeout(() => {
+                    document.querySelector("#home").scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
             $(SELECTOR).children("i").fadeOut(function () {
                 $(this).removeClass("fa-chevron-down");
                 $(this).addClass("fa-chevron-up");
