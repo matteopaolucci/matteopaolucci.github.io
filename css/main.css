@@ -141,6 +141,7 @@ main > div {
     margin: 10vw 5vw;
     border-radius: 5px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 main > div > header > picture {
