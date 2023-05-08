@@ -7,8 +7,10 @@ a:hover:not(.fa, .fab, .fas) {
     text-decoration: revert;
 }
 
-a.fa:hover, a.fab:hover, a.fas:hover {
-    animation: trasparenza 1.5s linear 0s infinite;
+a.fa:hover,
+a.fab:hover,
+a.fas:hover {
+    /* animation: trasparenza 1.5s linear 0s infinite; */
 }
 
 body {
@@ -24,20 +26,21 @@ body {
     scroll-snap-type: y mandatory;
 }
 
-body > main {
+body>main {
     background-image: url("../uploads/code_mobile_op.jpg");
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-body > main, body > section {
+body>main,
+body>section {
     scroll-snap-align: center;
     width: 100%;
     height: 100vh;
 }
 
-body > section#home {
+body>section#home {
     background-color: #0d1117;
 }
 
@@ -80,7 +83,7 @@ div#nav {
     justify-content: center;
     align-items: center;
     position: fixed;
-    background-image: conic-gradient(black, darkblue , #560bad, black);
+    background-image: conic-gradient(black, darkblue, #560bad, black);
     border: 1px white solid;
     bottom: 25px;
     right: 25px;
@@ -93,7 +96,9 @@ div#nav i {
     font-size: 2rem;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     text-align: center;
 }
 
@@ -116,23 +121,23 @@ html {
     scroll-behavior: smooth;
 }
 
-li#github > div {
+li#github>div {
     display: none;
 }
 
-li#github > ul {
-	height: 20px;
-	margin: 16px;
+li#github>ul {
+    height: 20px;
+    margin: 16px;
 }
 
-li#github > ul > li:last-child {
+li#github>ul>li:last-child {
     height: 0px;
     position: relative;
     left: 43%;
     bottom: 20px;
 }
 
-main > div {
+main>div {
     padding: 0 10px;
     background-color: #0d1117;
     display: flex;
@@ -143,37 +148,47 @@ main > div {
     border-radius: 5px;
 }
 
-main > div > header > picture {
+main>div>header>picture {
     display: flex;
     justify-content: center;
     margin-bottom: 8%;
 }
 
-main > div > hr {
+main>div>hr {
     width: 60%;
 }
 
-main > div > ul {
+main>div>ul {
     width: 80%;
     margin: 2em 0 2em 10%;
     border: 1px white solid;
     border-radius: 6px;
 }
 
-main > div > ul > li {
+main>div>ul>li {
     text-align: center;
 }
 
-main > div > ul > li:not(:first-child) {
+main>div>ul>li:not(:first-child) {
     height: 20px;
-	padding: 16px 0;
+    padding: 16px 0;
 }
 
-main > div > ul > li:not(:last-child) {
+main>div>ul>li:not(:last-child) {
     border-bottom: 1px white solid;
 }
 
-picture#profile > img {
+main>div>ul>li a span {
+    opacity: 0;
+    text-decoration: underline;
+    transition: opacity 1s ease-in;
+    position: relative;
+    display: block;
+    top: -18px;
+    left: 110px;
+}
+
+picture#profile>img {
     border-radius: 100%;
     width: 10em;
 }
@@ -185,11 +200,11 @@ section#home {
     justify-content: center;
 }
 
-section#home > div {
+section#home>div {
     margin: 0 5%;
 }
 
-section#home > div a {
+section#home>div a {
     text-decoration: revert;
 }
 
@@ -208,7 +223,7 @@ ul {
         font-family: monospace, monospace;
     }
 
-    body > main {
+    body>main {
         background-image: url("../uploads/code.jpg");
     }
 
@@ -218,16 +233,15 @@ ul {
         width: 100px;
     }
 
-    main > div {
+    main>div {
         padding: 10px;
         width: 50%;
         margin-left: 25%;
     }
-    
+
 }
 
-@media screen and (min-width:1024px) {
-}
+@media screen and (min-width:1024px) {}
 
 @media screen and (min-width:1280px) {
     div.container {
@@ -237,7 +251,7 @@ ul {
     div.container:hover img {
         opacity: 0.3;
     }
-      
+
     div.container:hover div.middle {
         opacity: 1;
     }
@@ -249,7 +263,7 @@ ul {
     div.container img:hover {
         opacity: 0.3;
     }
-    
+
     div.middle {
         transition: .5s ease;
         opacity: 0;
@@ -260,13 +274,30 @@ ul {
         margin-bottom: 4%;
     }
 
-    main > div {
+    main>div {
         width: 30%;
         margin-left: 35%;
     }
 
-    main > div > ul {
+    main>div>ul {
         margin: 3em 0 3em 10%;
+    }
+
+    main>div>ul>li:not(:first-child) a {
+        transition: transform 1s ease-in-out;
+    }
+
+    main>div>ul>li:not(:first-child):hover a {
+        transform: translate(-55%);
+    }
+
+    main>div>ul>li:last-child a span {
+        top: -16px;
+        left: 100px;
+    }
+
+    main>div>ul>li:hover a span {
+        opacity: 1;
     }
 
     section#home h2 {
@@ -274,15 +305,16 @@ ul {
     }
 }
 
-@keyframes zoom {
-    to {
-      transform: scale(1.2);
-    }
-}
-
-
 @keyframes trasparenza {
-    0% {opacity: 1;}
-    50% {opacity: 0.2;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
