@@ -21,6 +21,10 @@ $(document).ready(function () {
             $(this).fadeIn();
         });
     });
+    $("main>div>ul>li:not(:first-child)").on("click tap", function() {
+        $("a.link").removeClass("link");
+        $(this).find("a").addClass("link");
+    });
     $("div#nav").click(() => { changeArrow(true) });
     OBSERVER.observe(target);
 });

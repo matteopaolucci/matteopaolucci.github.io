@@ -167,25 +167,42 @@ main>div>ul {
 
 main>div>ul>li {
     text-align: center;
+    white-space: nowrap;
 }
 
 main>div>ul>li:not(:first-child) {
     height: 20px;
     padding: 16px 0;
+    text-align: left;
+    padding-left: calc(50% - 8px);
+}
+
+main>div>ul>li:not(:first-child) i {
+    transition: transform 1s ease-in-out;
+}
+
+main>div>ul>li:not(:first-child):hover a, main>div>ul>li:not(:first-child):active a {
+    opacity: 1;
+}
+
+main>div>ul>li:not(:first-child) a.link {
+    pointer-events: all;
 }
 
 main>div>ul>li:not(:last-child) {
     border-bottom: 1px white solid;
 }
 
-main>div>ul>li a span {
+main>div>ul>li:not(:first-child) a {
+    pointer-events: none;
     opacity: 0;
     text-decoration: underline;
     transition: opacity 1s ease-in;
-    position: relative;
-    display: block;
-    top: -18px;
-    left: 110px;
+}
+
+main>div>ul>li:not(:first-child):hover i,
+main>div>ul>li:not(:first-child):active i {
+    transform: translate(-46%);
 }
 
 picture#profile>img {
@@ -283,21 +300,8 @@ ul {
         margin: 3em 0 3em 10%;
     }
 
-    main>div>ul>li:not(:first-child) a {
-        transition: transform 1s ease-in-out;
-    }
-
-    main>div>ul>li:not(:first-child):hover a {
-        transform: translate(-55%);
-    }
-
-    main>div>ul>li:last-child a span {
-        top: -16px;
-        left: 100px;
-    }
-
-    main>div>ul>li:hover a span {
-        opacity: 1;
+    main>div>ul>li:hover a {
+        pointer-events: all;
     }
 
     section#home h2 {
