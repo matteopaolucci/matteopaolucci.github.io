@@ -7,12 +7,6 @@ a:hover:not(.fa, .fab, .fas) {
     text-decoration: revert;
 }
 
-a.fa:hover,
-a.fab:hover,
-a.fas:hover {
-    /* animation: trasparenza 1.5s linear 0s infinite; */
-}
-
 body {
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -27,7 +21,7 @@ body {
 }
 
 body>main {
-    background-image: url("../uploads/code_mobile_op.jpg");
+    background-image: url("../uploads/code_mobile_op.avif");
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,18 +169,16 @@ main>div>ul>li:not(:first-child) {
     padding: 16px 0;
     text-align: left;
     padding-left: calc(50% - 8px);
+    overflow: hidden;
 }
 
 main>div>ul>li:not(:first-child) i {
     transition: transform 1s ease-in-out;
 }
 
-main>div>ul>li:not(:first-child):hover a, main>div>ul>li:not(:first-child):active a {
+main>div>ul>li:not(:first-child):hover a,
+main>div>ul>li:not(:first-child):active a {
     opacity: 1;
-}
-
-main>div>ul>li:not(:first-child) a.link {
-    pointer-events: all;
 }
 
 main>div>ul>li:not(:last-child) {
@@ -234,6 +226,34 @@ ul {
     list-style: none;
 }
 
+@media (orientation: landscape) and (width < 768px) {
+    body {
+        scroll-snap-type: initial;
+    }
+
+    body>main,
+    body>section {
+        height: 100vw;
+    }
+
+    div#nav {
+        display: none;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    li#github>ul,
+    main>div>ul>li:not(:first-child) {
+        height: 10px;
+    }
+
+    main>div>header>picture {
+        margin-bottom: 4%;
+    }
+}
+
 @media screen and (min-width:768px) {
 
     body {
@@ -241,7 +261,7 @@ ul {
     }
 
     body>main {
-        background-image: url("../uploads/code.jpg");
+        background-image: url("../uploads/code.avif");
     }
 
     div#nav {
@@ -300,12 +320,20 @@ ul {
         margin: 3em 0 3em 10%;
     }
 
-    main>div>ul>li:hover a {
-        pointer-events: all;
-    }
-
     section#home h2 {
         margin-top: 50px;
+    }
+}
+
+@media (pointer: coarse) {
+    main>div>ul>li:not(:first-child) a.link {
+        pointer-events: all;
+    }
+}
+
+@media (pointer: fine) {
+    main>div>ul>li:hover a {
+        pointer-events: all;
     }
 }
 

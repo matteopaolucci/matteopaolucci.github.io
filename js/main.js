@@ -63,6 +63,8 @@ function intersetctionCallback(entries, obs) {
 function changeArrow(clicked) {
     const SCROLL_DELAY_MS = 800;
     const SELECTOR = "div#nav";
+    $("a.link").removeClass("link");
+    document.activeElement = null;
     if (Date.now() - lastChangeArrow > SCROLL_DELAY_MS) {
         if ($(SELECTOR).hasClass("clicked")) {
             if (clicked) {
