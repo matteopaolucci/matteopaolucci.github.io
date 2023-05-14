@@ -45,6 +45,16 @@ div.container {
     aspect-ratio: 1 / 1;
 }
 
+div.container a {
+    visibility: hidden;
+}
+
+div.container:active a,
+div.container:hover a {
+    visibility: visible;
+    animation: disable-pointer-events 200ms;
+}
+
 div.container img {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -52,13 +62,24 @@ div.container img {
     display: block;
     transition: .5s ease;
     backface-visibility: hidden;
+}
+
+div.container:active img,
+div.container:hover img {
     opacity: 0.3;
+    filter: grayscale(100%);
+}
+
+div.container:active div.middle,
+div.container:hover div.middle {
+    opacity: 1;
 }
 
 div.middle {
     position: absolute;
     top: 50%;
     left: 50%;
+    opacity: 0;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
 }
@@ -285,10 +306,6 @@ ul {
         max-width: 500px;
     }
 
-    div.container:hover img {
-        opacity: 0.3;
-    }
-
     div.container:hover div.middle {
         opacity: 1;
     }
@@ -299,11 +316,11 @@ ul {
 
     div.container img:hover {
         opacity: 0.3;
+        filter: grayscale(100%);
     }
 
     div.middle {
-        transition: .5s ease;
-        opacity: 0;
+        transition: .5s ease, filter .5s;
         text-align: center;
     }
 
@@ -337,16 +354,16 @@ ul {
     }
 }
 
-@keyframes trasparenza {
+@keyframes disable-pointer-events {
     0% {
-        opacity: 1;
+        visibility: hidden;
     }
 
     50% {
-        opacity: 0.2;
+        visibility: hidden;
     }
 
     100% {
-        opacity: 1;
+        visibility: visible;
     }
 }
