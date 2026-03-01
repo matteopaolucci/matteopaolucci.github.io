@@ -301,9 +301,18 @@ ul {
 
 @media screen and (min-width:1024px) {}
 
-@media screen and (min-width:1280px) {
-    div.container {
-        max-width: 500px;
+@media screen and (min-width:1250px) {
+
+    header {
+	    margin-bottom: 0;
+    }
+
+    main > div > header > picture {
+        margin-bottom: 0;
+    }
+
+    main > div > ul {
+          margin: 1em 0 1em 10%;
     }
 
     div.container:hover div.middle {
@@ -324,6 +333,10 @@ ul {
         text-align: center;
     }
 
+    div#nav {
+        width: 60px;
+    }
+
     header {
         margin-bottom: 4%;
     }
@@ -331,14 +344,6 @@ ul {
     main>div {
         width: 30%;
         margin-left: 35%;
-    }
-
-    main>div>ul {
-        margin: 3em 0 3em 10%;
-    }
-
-    section#home h2 {
-        margin-top: 50px;
     }
 }
 
